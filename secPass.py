@@ -1,5 +1,6 @@
 import random
 import string
+import argparse
 
 # Códigos ANSI para colores
 ROJO = "\033[31m"
@@ -10,11 +11,15 @@ RESET = "\033[0m"
 
 
 
-long = int(input('Indica la longitud de la contraseña(minimo 8): '))
-chars = string.ascii_letters + string.digits + string.punctuation
-passwd = "".join(random.choice(chars) for i in range(long))
+parser = argparse.ArgumentParser(description="Herramienta para crear contraseñas seguras")
+parser.add_argument("-l", "--long", type=int, default=8, help="Longitud de la contraseña")
 
-if long < 8:
+args = parser.parse_args()
+
+chars = string.ascii_letters + string.digits + string.punctuation
+passwd = "".join(random.choice(chars) for i in range(args.long))
+
+if args.long < 8:
     print(" ")
     print(ROJO + "[-] La longitud de la contraseña debe de ser mayor a 8 caracteres" + RESET)
     print(" ")
