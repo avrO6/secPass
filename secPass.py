@@ -16,8 +16,11 @@ parser.add_argument("-l", "--long", type=int, default=8, help="Longitud de la co
 
 args = parser.parse_args()
 
-chars = string.ascii_letters + string.digits + string.punctuation
-passwd = "".join(random.choice(chars) for i in range(args.long))
+#funcion para generar contraseñas seguras
+def genPass():
+    chars = string.ascii_letters + string.digits + string.punctuation
+    passwd = "".join(random.choice(chars) for i in range(args.long))
+    return passwd
 
 if args.long < 8:
     print(" ")
@@ -25,5 +28,6 @@ if args.long < 8:
     print(" ")
 else:
     print(" ")
-    print(VERDE + "[+]" + RESET + " Tu contraseña es: " + AZUL + passwd + RESET)
+    print(VERDE + "[+]" + RESET + " Tu contraseña es: " + AZUL + genPass() + RESET)
     print(" ")
+    
