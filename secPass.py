@@ -22,12 +22,16 @@ def genPass():
     passwd = "".join(random.choice(chars) for i in range(args.long))
     return passwd
 
-if args.long < 8:
-    print(" ")
-    print(ROJO + "[-] La longitud de la contraseña debe de ser mayor a 8 caracteres" + RESET)
-    print(" ")
-else:
-    print(" ")
-    print(VERDE + "[+]" + RESET + " Tu contraseña es: " + AZUL + genPass() + RESET)
-    print(" ")
-    
+def main():
+
+    if args.long < 8:
+        print(" ")
+        print(ROJO + "[-] La longitud de la contraseña debe de ser mayor a 8 caracteres" + RESET)
+        print(" ")
+    else:
+        print(" ")
+        print(VERDE + "[+]" + RESET + " Tu contraseña es: " + AZUL + genPass() + RESET)
+        print(" ")
+        
+if __name__ == '__main__':
+    main()
